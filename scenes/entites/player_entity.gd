@@ -49,4 +49,5 @@ func _on_hitbox_body_entered(body):
 	if body ==null:
 		return
 	if body.is_in_group('asteroid'):
+		SignalBus.emit_on_player_death()
 		self.queue_free()
