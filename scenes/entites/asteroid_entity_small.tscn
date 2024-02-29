@@ -1,0 +1,47 @@
+[gd_scene load_steps=8 format=3 uid="uid://dv4vfxwrjd5vh"]
+
+[ext_resource type="Script" path="res://scenes/entites/asteroid_entity.gd" id="1_33l0q"]
+[ext_resource type="Texture2D" uid="uid://cprsvi2j6ssxd" path="res://assets/aseprite/asteroid-S-0.png" id="2_rfcd8"]
+[ext_resource type="PackedScene" uid="uid://ckbr84ifnh53m" path="res://scenes/utility/hitbox.tscn" id="3_oak7y"]
+[ext_resource type="Script" path="res://moi_modules/utility/bounce.gd" id="4_tvfuf"]
+[ext_resource type="Script" path="res://moi_modules/utility/screen_wrap.gd" id="5_imvmx"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pfmp7"]
+radius = 8.94427
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1gw4f"]
+radius = 9.05539
+
+[node name="AsteroidEntity" type="CharacterBody2D" groups=["asteroid", "small"]]
+position = Vector2(0, -8)
+collision_layer = 4
+collision_mask = 4
+motion_mode = 1
+script = ExtResource("1_33l0q")
+entity_type = "SMALL"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+texture = ExtResource("2_rfcd8")
+offset = Vector2(8, -8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_pfmp7")
+
+[node name="Hitbox" parent="." instance=ExtResource("3_oak7y")]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+shape = SubResource("CircleShape2D_1gw4f")
+
+[node name="Bounce" type="Node2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("4_tvfuf")
+
+[node name="ScreenWrap" type="Node" parent="."]
+script = ExtResource("5_imvmx")
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
+
+[editable path="Hitbox"]

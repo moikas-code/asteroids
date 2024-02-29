@@ -1,0 +1,39 @@
+[gd_scene load_steps=8 format=3 uid="uid://crxrvipuex3wq"]
+
+[ext_resource type="Script" path="res://scenes/entites/player_entity.gd" id="1_4eh83"]
+[ext_resource type="PackedScene" uid="uid://ckbr84ifnh53m" path="res://scenes/utility/hitbox.tscn" id="2_5sp0e"]
+[ext_resource type="PackedScene" uid="uid://b73x1m4x22stm" path="res://scenes/entites/laser_entity.tscn" id="2_kmuv0"]
+[ext_resource type="Texture2D" uid="uid://xfsyfs2khqsq" path="res://assets/aseprite/ship-Sheet.png" id="3_c763l"]
+[ext_resource type="Script" path="res://moi_modules/utility/screen_wrap.gd" id="5_8kkw6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cbcim"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4rtx6"]
+
+[node name="PlayerEntity" type="CharacterBody2D" groups=["player"]]
+collision_layer = 2
+collision_mask = 2
+motion_mode = 1
+script = ExtResource("1_4eh83")
+laser_scene = ExtResource("2_kmuv0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("3_c763l")
+hframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_cbcim")
+
+[node name="Hitbox" parent="." instance=ExtResource("2_5sp0e")]
+collision_layer = 20
+collision_mask = 20
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+shape = SubResource("CircleShape2D_4rtx6")
+
+[node name="ScreenWrap" type="Node" parent="."]
+script = ExtResource("5_8kkw6")
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
+
+[editable path="Hitbox"]

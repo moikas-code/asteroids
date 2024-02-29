@@ -1,0 +1,21 @@
+[gd_scene load_steps=6 format=3 uid="uid://csox41fq1tkwg"]
+
+[ext_resource type="Script" path="res://scenes/managers/asteroid_manager.gd" id="1_q47l4"]
+[ext_resource type="PackedScene" uid="uid://fb6wxq44cf1q" path="res://scenes/entites/asteroid_entity_large.tscn" id="2_8flbj"]
+[ext_resource type="PackedScene" uid="uid://dvk1wrae8ggyx" path="res://scenes/entites/asteroid_entity_medium.tscn" id="3_wih5y"]
+[ext_resource type="PackedScene" uid="uid://dv4vfxwrjd5vh" path="res://scenes/entites/asteroid_entity_small.tscn" id="4_21xst"]
+[ext_resource type="Script" path="res://moi_modules/lib/random_posititon.gd" id="5_dnp3i"]
+
+[node name="AsteroidManager" type="Node2D"]
+script = ExtResource("1_q47l4")
+large_asteroid_scene = ExtResource("2_8flbj")
+medium_asteroid_scene = ExtResource("3_wih5y")
+small_asteroid_scene = ExtResource("4_21xst")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="RandomPosititon" type="Node2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("5_dnp3i")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
