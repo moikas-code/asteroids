@@ -17,8 +17,8 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-NodeExtensions="*res://moi_modules/autoloads/NodeExtensions.gd"
-SignalBus="*res://moi_modules/autoloads/SignalBus.gd"
+NodeExtensions="*res://modules/autoloads/NodeExtensions.gd"
+SignalBus="*res://modules/autoloads/SignalBus.gd"
 
 [display]
 
