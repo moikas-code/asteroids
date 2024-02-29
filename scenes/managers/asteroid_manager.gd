@@ -11,6 +11,7 @@ var player:PlayerEntity = null
 @export var max_large_asteroids:int = 10
 @export var max_medium_chunks:int = 2
 @export var max_small_chunks:int = 3
+@export var offset_distance:int = 21
 @onready var timer = $Timer
 @onready var random_posititon = %RandomPosititon
 
@@ -29,12 +30,11 @@ func on_entity_destroy(entity:CharacterBody2D, type:String):
 			print('5 Points')
 			large_asteroid_count -= 1
 			for n in range(max_medium_chunks):
-				spawn_entity(entity_container, medium_asteroid_scene, "OBJECT", random_posititon.get_random_positon(entity), {"size":"MEDIUM"})
+				spawn_entity(entity_container, medium_asteroid_scene, "OBJECT", entity.position + Vector2(offset_distance, 0).rotated(deg_to_rad(randi_range(0, 360))), {"size":"MEDIUM"})
 	
 		"MEDIUM":
 			print('10 Points')
-			for n in range(max_small_chunks):
-				spawn_entity(entity_container, small_asteroid_scene, "OBJECT", random_posititon.get_random_positon(entity),  {"size":"SMALL"})
+			for n in range(max_small_chunks):spawn_entity(entity_container, small_asteroid_scene, "OBJECT", entity.position + Vector2(offset_distance, 0).rotated(deg_to_rad(randi_range(0, 360))),  {"size":"SMALL"})
 		"SMALL":
 			print('15 Points')
 					#

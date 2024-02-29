@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://fb6wxq44cf1q"]
+[gd_scene load_steps=9 format=3 uid="uid://fb6wxq44cf1q"]
 
 [ext_resource type="Script" path="res://scenes/entites/asteroid_entity.gd" id="1_2h5ch"]
 [ext_resource type="Texture2D" uid="uid://b52typnoulwfc" path="res://assets/aseprite/asteroid-L-0.png" id="2_cjiwc"]
 [ext_resource type="PackedScene" uid="uid://ckbr84ifnh53m" path="res://scenes/utility/hitbox.tscn" id="3_3qshe"]
 [ext_resource type="Script" path="res://moi_modules/utility/bounce.gd" id="4_pvlms"]
 [ext_resource type="Script" path="res://moi_modules/utility/screen_wrap.gd" id="5_cxns3"]
+[ext_resource type="PackedScene" uid="uid://c242ph8v4i4ef" path="res://moi_modules/components/handlers/despawn_handler.tscn" id="6_wcis1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pfmp7"]
 radius = 29.0
@@ -42,6 +43,10 @@ script = ExtResource("4_pvlms")
 
 [node name="ScreenWrap" type="Node" parent="."]
 script = ExtResource("5_cxns3")
+
+[node name="DespawnHandler" parent="." node_paths=PackedStringArray("entity") instance=ExtResource("6_wcis1")]
+entity = NodePath("..")
+despawn_time = 10.0
 
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
 

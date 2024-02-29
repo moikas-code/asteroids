@@ -13,7 +13,7 @@ var medium_range:int = randi_range(0,3)
 var small_range:int = randi_range(0,4)
 
 func _ready()->void:
-	set_velocity(Vector2(randf_range(-31.415,31.415),50))
+	set_velocity(Vector2(randi_range(-50,50),randi_range(-50,50)))
 
 func _process(delta):
 		handle_sprite(size)
