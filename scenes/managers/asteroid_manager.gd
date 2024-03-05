@@ -40,6 +40,8 @@ func on_entity_destroy(entity:CharacterBody2D, type:String):
 					#
 
 func _on_timer_timeout():
+	if game_manager == null:
+		return
 	game_manager.add_time(1)
 	
 	player = get_tree().get_first_node_in_group('player')

@@ -1,14 +1,14 @@
 extends Control
-class_name GameEnd
-@onready var retry = %Retry
+class_name GameStart
+@onready var exit = %Exit
 @onready var menu = %Menu
 
 func _ready()->void:
 	menu.pressed.connect(onMenu)
-	retry.pressed.connect(onRetry)
+	exit.pressed.connect(onExit)
 	
 func onMenu()->void:
-	get_tree().change_scene_to_packed(load("res://scenes/game_start.tscn"))
-
-func onRetry()->void:
 	get_tree().change_scene_to_packed(load("res://scenes/main.tscn"))
+
+func onExit()->void:
+	get_tree().quit()

@@ -1,9 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://bbmtr4tahrug6"]
+[gd_scene load_steps=5 format=3 uid="uid://bbmtr4tahrug6"]
 
 [ext_resource type="Texture2D" uid="uid://c6nl3vpeiq23e" path="res://assets/aseprite/bg.png" id="1_c0ouv"]
 [ext_resource type="PackedScene" uid="uid://crxrvipuex3wq" path="res://scenes/entites/player_entity.tscn" id="1_qwski"]
 [ext_resource type="PackedScene" uid="uid://dr6mialxrn426" path="res://scenes/managers/game_manager.tscn" id="3_58gpj"]
-[ext_resource type="PackedScene" uid="uid://56s13fw7rpy0" path="res://moi_modules/components/camera/player_camera.tscn" id="3_gf7od"]
 [ext_resource type="PackedScene" uid="uid://csox41fq1tkwg" path="res://scenes/managers/asteroid_manager.tscn" id="3_w7h3j"]
 
 [node name="Main" type="Node2D"]
@@ -16,13 +15,19 @@ position = Vector2(320, 181)
 [node name="ManagerContainer" type="Node2D" parent="."]
 
 [node name="AsteroidManager" parent="ManagerContainer" node_paths=PackedStringArray("game_manager") instance=ExtResource("3_w7h3j")]
+max_large_asteroids = 5
+max_small_chunks = 2
+offset_distance = 20
 game_manager = NodePath("../GameManager")
+spawn_delay = 3
 
 [node name="GameManager" parent="ManagerContainer" instance=ExtResource("3_58gpj")]
 
 [node name="CameraContainer" type="Node2D" parent="."]
 
-[node name="PlayerCamera" parent="CameraContainer" instance=ExtResource("3_gf7od")]
+[node name="Camera2D" type="Camera2D" parent="CameraContainer"]
+position = Vector2(320, 180)
+scale = Vector2(-65.9277, 24.5017)
 
 [node name="LevelContainer" type="Node2D" parent="." groups=["level_container"]]
 
@@ -30,15 +35,13 @@ game_manager = NodePath("../GameManager")
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="LevelContainer/ParallaxBackground"]
 motion_scale = Vector2(0, 0)
-motion_mirroring = Vector2(640, 320)
 
 [node name="TextureRect" type="TextureRect" parent="LevelContainer/ParallaxBackground/ParallaxLayer"]
 anchors_preset = 9
 anchor_bottom = 1.0
-offset_left = -1.0
-offset_top = 1.0
-offset_right = 638.0
-offset_bottom = 363.0
+offset_left = 1.0
+offset_right = 640.0
+offset_bottom = 362.0
 grow_vertical = 2
 texture = ExtResource("1_c0ouv")
 stretch_mode = 1

@@ -42,6 +42,8 @@ script = ExtResource("4_66ks6")
 
 [node name="ScreenWrap" type="Node" parent="."]
 script = ExtResource("5_ewyi1")
+window_width = 640
+window_height = 360
 
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
 

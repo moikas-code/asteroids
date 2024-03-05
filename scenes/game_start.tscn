@@ -1,11 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://c8u4bnifhqupl"]
+[gd_scene load_steps=4 format=3 uid="uid://brwdjffvmtfxm"]
 
-[ext_resource type="Texture2D" uid="uid://c6nl3vpeiq23e" path="res://assets/aseprite/bg.png" id="1_36fg8"]
-[ext_resource type="Script" path="res://scenes/game_end.gd" id="1_yw26i"]
+[ext_resource type="Texture2D" uid="uid://c6nl3vpeiq23e" path="res://assets/aseprite/bg.png" id="1_snyjo"]
+[ext_resource type="Script" path="res://scenes/game_start.gd" id="1_yejml"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jckoj"]
 
-[node name="GameEnd" type="Control"]
+[node name="GameStart" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -13,7 +13,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1, 1.00588)
-script = ExtResource("1_yw26i")
+script = ExtResource("1_yejml")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -29,7 +29,7 @@ grow_vertical = 2
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer"]
 layout_mode = 2
-texture = ExtResource("1_36fg8")
+texture = ExtResource("1_snyjo")
 expand_mode = 2
 stretch_mode = 1
 
@@ -48,16 +48,16 @@ theme_override_styles/separator = SubResource("StyleBoxEmpty_jckoj")
 [node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 64
-text = "Game Over"
-
-[node name="Retry" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 4
-text = "Retry"
+text = "ASTEROIDS"
 
 [node name="Menu" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
-text = "Menu"
+text = "Start"
+
+[node name="Exit" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Exit"

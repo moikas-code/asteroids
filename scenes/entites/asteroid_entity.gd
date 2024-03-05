@@ -1,4 +1,4 @@
-extends BaseEntity
+extends ObjectEntity2D
 class_name AsteroidEntity
 @onready var bounce = %Bounce as Bounce
 @onready var screen_wrap = $ScreenWrap
@@ -16,6 +16,7 @@ func _ready()->void:
 	set_velocity(Vector2(randi_range(-50,50),randi_range(-50,50)))
 
 func _process(delta):
+		screen_wrap.wrap_screen(self)
 		handle_sprite(size)
 
 func _physics_process(delta):

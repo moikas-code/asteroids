@@ -1,4 +1,4 @@
-extends BaseEntity
+extends ObjectEntity2D
 class_name ProjectileEntity
 @onready var timer:Timer = %Timer
 @export_range(0.0,10.0) var despawn_time:float = 2.5

@@ -1,4 +1,4 @@
-extends BaseEntity
+extends BaseEntity2D
 
 class_name PlayerEntity
 @export var laser_scene:PackedScene=null
@@ -15,7 +15,7 @@ func _physics_process(delta):
 	
 	on_player_ready()
 	handle_attack()
-	#screen_wrap.wrap_screen(self)
+	screen_wrap.wrap_screen(self)
 	mouse_position = get_global_mouse_position()
 	look_at(mouse_position)
 	
